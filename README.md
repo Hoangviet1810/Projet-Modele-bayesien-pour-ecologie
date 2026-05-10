@@ -57,4 +57,4 @@ Vous pouvez consulter le rapport détaillé du projet (format PDF) en cliquant s
 
 <a href="Rapport.pdf" target="_blank" style="font-weight: bold; text-decoration: underline;"> 📄 Ouvrir le rapport PDF (le lien s'ouvrira dans un nouvel onglet) </a>
 
-![Dashboard_modele_bayesien](Dashboard_modele_bayesien.png)
+![Dashboard_modele_bayesien](images/Dashboard_modele_bayesien.png)
