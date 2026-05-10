@@ -28,10 +28,10 @@ Le projet est divisé en plusieurs parties :
 
     Dans cette partie, nous avons adopté la même méthode que celle utilisée dans la version 1 puisqu’elle demande de modifier les paramètres de la première partie ; la seconde approche, plus modulaire, est la plus adaptée.
 
-::: callout-note
+
 ## Consulter le rapport complet
 
 Vous pouvez consulter le rapport détaillé du projet (format PDF) en cliquant sur le lien ci-dessous :
 
 <a href="Rapport.pdf" target="_blank" style="font-weight: bold; text-decoration: underline;"> 📄 Ouvrir le rapport PDF (le lien s'ouvrira dans un nouvel onglet) </a>
-:::
+
