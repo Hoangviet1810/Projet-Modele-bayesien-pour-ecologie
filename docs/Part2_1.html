@@ -3960,31 +3960,29 @@ Figure 1
 <section id="extraction-des-données" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Extraction des données</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                   CHARGEMENT ET PRÉ-TRAITEMENT DES DONNÉES</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgbif)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>tigre_moustique_data <span class="ot">&lt;-</span> <span class="fu">occ_search</span>(</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">scientificName =</span> <span class="st">&quot;Aedes albopictus&quot;</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">country =</span> <span class="st">&quot;FR&quot;</span>,</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">limit =</span> <span class="dv">2210</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                   RESUME DES DONNÉES</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> tigre_moustique_data <span class="sc">%&gt;%</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(year), <span class="sc">!</span><span class="fu">is.na</span>(stateProvince)) <span class="sc">%&gt;%</span>  </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, stateProvince) <span class="sc">%&gt;%</span>                 </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_occurrences =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> summary_table</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>i <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">factor</span>(df<span class="sc">$</span>year))</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>j <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">factor</span>(df<span class="sc">$</span>stateProvince))</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>df[, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;stateProvince&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;j&quot;</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#                   CHARGEMENT ET PRÉ-TRAITEMENT DES DONNÉES</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgbif)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(maps)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>tigre_moustique_data <span class="ot">&lt;-</span> <span class="fu">occ_search</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">scientificName =</span> <span class="st">&quot;Aedes albopictus&quot;</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">country =</span> <span class="st">&quot;FR&quot;</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">limit =</span> <span class="dv">2210</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>)<span class="sc">$</span>data</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                   RESUME DES DONNÉES</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> tigre_moustique_data <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(year), <span class="sc">!</span><span class="fu">is.na</span>(stateProvince)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year, stateProvince) <span class="sc">%&gt;%</span>                 </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_occurrences =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> summary_table</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>i <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">factor</span>(df<span class="sc">$</span>year))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>j <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">factor</span>(df<span class="sc">$</span>stateProvince))</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>df[, <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;stateProvince&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;j&quot;</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 85 × 4
     year stateProvince                  i     j
@@ -4024,27 +4022,24 @@ Figure 1
 <section id="la-fonction-de-log-posteriori" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> La fonction de log-posteriori</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                 La fonction log-postérieure </span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------------------------</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>log_posterior <span class="ot">&lt;-</span> <span class="cf">function</span>(Z, Y, J, mu, gamma) { </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  sigma2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(gamma)</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>log_posterior <span class="ot">&lt;-</span> <span class="cf">function</span>(Z, Y, J, mu, gamma) { </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  sigma2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(gamma)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Terme 1: Vraisemblance de Poisson</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  log_vrais <span class="ot">&lt;-</span> <span class="fu">sum</span>(Y <span class="sc">*</span> Z <span class="sc">-</span> J <span class="sc">*</span> <span class="fu">exp</span>(Z))</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Terme 1: Vraisemblance de Poisson</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  log_vrais <span class="ot">&lt;-</span> <span class="fu">sum</span>(Y <span class="sc">*</span> Z <span class="sc">-</span> J <span class="sc">*</span> <span class="fu">exp</span>(Z))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Terme 2: Loi a priori conditionnelle des Zi (Loi Normale)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  log_prior_Z <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">dnorm</span>(Z, <span class="at">mean =</span> mu, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2), <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Terme 2: Loi a priori conditionnelle des Zi (Loi Normale)</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  log_prior_Z <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">dnorm</span>(Z, <span class="at">mean =</span> mu, <span class="at">sd =</span> <span class="fu">sqrt</span>(sigma2), <span class="at">log =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Terme 3: Loi a priori de μ, σ2</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  log_prior_mu <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  log_prior_sigma2 <span class="ot">&lt;-</span> <span class="fu">dexp</span>(sigma2, <span class="at">rate =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> gamma </span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> log_vrais <span class="sc">+</span> log_prior_Z <span class="sc">+</span> log_prior_mu <span class="sc">+</span> log_prior_sigma2</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(res) <span class="sc">||</span> <span class="fu">is.infinite</span>(res)) <span class="fu">return</span>(<span class="sc">-</span><span class="fl">1e20</span>) </span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(res)</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Terme 3: Loi a priori de μ, σ2</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  log_prior_mu <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>, <span class="at">log =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  log_prior_sigma2 <span class="ot">&lt;-</span> <span class="fu">dexp</span>(sigma2, <span class="at">rate =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> gamma </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> log_vrais <span class="sc">+</span> log_prior_Z <span class="sc">+</span> log_prior_mu <span class="sc">+</span> log_prior_sigma2</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.na</span>(res) <span class="sc">||</span> <span class="fu">is.infinite</span>(res)) <span class="fu">return</span>(<span class="sc">-</span><span class="fl">1e20</span>) </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(res)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="les-fonctions-de-gradients" class="level1" data-number="4">
@@ -4247,35 +4242,35 @@ Figure 1
   Chaîne 1 | Progression : 75000 / 100000 (75%) | Taux d&#39;acc. : 98.6%
   Chaîne 1 | Progression : 100000 / 100000 (100%) | Taux d&#39;acc. : 98.6%
 =&gt; Chaîne 1 terminée avec succès. Taux d&#39;acceptation final : 98.60%
-Chaîne 1 terminée en 1.03 minutes.
+Chaîne 1 terminée en 0.86 minutes.
 Exécution de la Chaîne 2...
   Chaîne 2 | Progression : 25000 / 100000 (25%) | Taux d&#39;acc. : 98.5%
   Chaîne 2 | Progression : 50000 / 100000 (50%) | Taux d&#39;acc. : 98.6%
   Chaîne 2 | Progression : 75000 / 100000 (75%) | Taux d&#39;acc. : 98.6%
   Chaîne 2 | Progression : 100000 / 100000 (100%) | Taux d&#39;acc. : 98.6%
 =&gt; Chaîne 2 terminée avec succès. Taux d&#39;acceptation final : 98.63%
-Chaîne 2 terminée en 1.02 minutes.
+Chaîne 2 terminée en 0.85 minutes.
 Exécution de la Chaîne 3...
   Chaîne 3 | Progression : 25000 / 100000 (25%) | Taux d&#39;acc. : 98.6%
   Chaîne 3 | Progression : 50000 / 100000 (50%) | Taux d&#39;acc. : 98.6%
   Chaîne 3 | Progression : 75000 / 100000 (75%) | Taux d&#39;acc. : 98.6%
   Chaîne 3 | Progression : 100000 / 100000 (100%) | Taux d&#39;acc. : 98.6%
 =&gt; Chaîne 3 terminée avec succès. Taux d&#39;acceptation final : 98.61%
-Chaîne 3 terminée en 1.05 minutes.
+Chaîne 3 terminée en 0.85 minutes.
 Exécution de la Chaîne 4...
   Chaîne 4 | Progression : 25000 / 100000 (25%) | Taux d&#39;acc. : 98.6%
   Chaîne 4 | Progression : 50000 / 100000 (50%) | Taux d&#39;acc. : 98.6%
   Chaîne 4 | Progression : 75000 / 100000 (75%) | Taux d&#39;acc. : 98.6%
   Chaîne 4 | Progression : 100000 / 100000 (100%) | Taux d&#39;acc. : 98.6%
 =&gt; Chaîne 4 terminée avec succès. Taux d&#39;acceptation final : 98.65%
-Chaîne 4 terminée en 1.06 minutes.
+Chaîne 4 terminée en 0.85 minutes.
 Exécution de la Chaîne 5...
   Chaîne 5 | Progression : 25000 / 100000 (25%) | Taux d&#39;acc. : 98.7%
   Chaîne 5 | Progression : 50000 / 100000 (50%) | Taux d&#39;acc. : 98.6%
   Chaîne 5 | Progression : 75000 / 100000 (75%) | Taux d&#39;acc. : 98.6%
   Chaîne 5 | Progression : 100000 / 100000 (100%) | Taux d&#39;acc. : 98.6%
 =&gt; Chaîne 5 terminée avec succès. Taux d&#39;acceptation final : 98.59%
-Chaîne 5 terminée en 1.12 minutes.</code></pre>
+Chaîne 5 terminée en 0.85 minutes.</code></pre>
 </div>
 </div>
 <div class="cell">
