@@ -34,7 +34,9 @@ Il y a 5 fonction. Ce sont:
 # Extraction des données
 
 ```{r}
+# ------------------------------------------------------------------------------
 #                   CHARGEMENT ET PRÉ-TRAITEMENT DES DONNÉES
+# ------------------------------------------------------------------------------
 library(rgbif)
 library(dplyr)
 library(sf)
@@ -48,6 +50,7 @@ tigre_moustique_data <- occ_search(
 
 # ------------------------------------------------------------------------------
 #                   RESUME DES DONNÉES
+# ------------------------------------------------------------------------------
 summary_table <- tigre_moustique_data %>%
   filter(!is.na(year), !is.na(stateProvince)) %>%  
   group_by(year, stateProvince) %>%                 
