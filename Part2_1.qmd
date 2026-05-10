@@ -34,9 +34,7 @@ Il y a 5 fonction. Ce sont:
 # Extraction des données
 
 ```{r}
-# ------------------------------------------------------------------------------
 #                   CHARGEMENT ET PRÉ-TRAITEMENT DES DONNÉES
-# ------------------------------------------------------------------------------
 library(rgbif)
 library(dplyr)
 library(sf)
@@ -84,9 +82,6 @@ I <- nrow(df_annual) # Nombre total d'années d'observation (généralement 12)
 # La fonction de log-posteriori
 
 ```{r}
-# ------------------------------------------------------------------------------
-#                 La fonction log-postérieure 
-# ------------------------------------------------------------------------------
 log_posterior <- function(Z, Y, J, mu, gamma) { 
   sigma2 <- exp(gamma)
   

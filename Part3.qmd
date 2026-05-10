@@ -175,10 +175,6 @@ cat("Nombre final d'observations introduites dans le modèle :", length(Y_ext), 
 # La fonction de log-posteriori 
 
 ```{r}
-# ------------------------------------------------------------------------------
-#               La fonction log-postérieure (Version Extension)
-# ------------------------------------------------------------------------------
-
 log_posterior_ext <- function(Z, beta, Y, X, site_idx, mu, gamma) { 
   sigma2 <- exp(gamma)
   

@@ -40,9 +40,6 @@ head(tigre_moustique_data)
 # RESUME DES DONNÉES
 
 ```{r}
-# ------------------------------------------------------------------------------
-#                   RESUME DES DONNÉES
-# ------------------------------------------------------------------------------
 summary_table <- tigre_moustique_data %>%
   filter(!is.na(year), !is.na(stateProvince)) %>%  
   group_by(year, stateProvince) %>%                 
@@ -60,9 +57,6 @@ datatable(summary_table)
 # VISUALISATIONS DES DONNEES 
 
 ```{r}
-# ------------------------------------------------------------------------------
-#                  VISUALISATIONS DES DONNEES 
-# ------------------------------------------------------------------------------
 library(sf)
 library(ggplot2)
 library(maps)
