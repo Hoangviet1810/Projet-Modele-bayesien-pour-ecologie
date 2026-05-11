@@ -38,3 +38,9 @@ Vous pouvez consulter le rapport détaillé du projet (format PDF) en cliquant s
 
 <a href="Rapport.pdf" target="_blank" style="font-weight: bold; text-decoration: underline;"> 📄 Ouvrir le rapport PDF </a>
 :::
+
+::: callout-note
+## Consulter le darshboard
+
+<a href="images/dashboard_bayes.png" target="_blank"> <img src="images/dashboard_bayes.png" alt="Dashboard du projet" style="max-width:100%; height:auto; border-radius:8px;"/> </a>
+:::
