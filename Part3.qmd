@@ -1,5 +1,5 @@
 ---
-title: "Partie 3 Modele Extension"
+title: "Partie 3 : Modèle Extension"
 author: "NGUYEN Duc Hoang Viet"
 format:
   html:
@@ -10,32 +10,37 @@ format:
     embed-resources: true # Để lưu thành 1
 execute:
   warning: false
-  message: false
+  message: true
 ---
 
+# Partie Modele Extension
 
-# Partie Modele Extension 
+On pourra considérer l'extension suivante pour expliquer une partie de la variabilité entre années :
 
-::: {#fig-model}
-![Structure du modèle extension](model2.png){width="90%" fig-align="center"}
-:::
+$$
+\begin{aligned}
+y_{ij} \mid \lambda_{ij} &\sim \text{Poisson}(\lambda_{ij}) \\
+\log \lambda_{ij} &= \alpha_j + \beta x_{ij} \\
+\alpha_j \mid \mu, \sigma^2 &\sim \mathcal{N}(\mu, \sigma^2)
+\end{aligned}
+$$
 
-Variante : sigma^2 suit une loi Exponentielle(1), mu suit loi Gaussien(0,4), Belta suit loi Gaussien(0,10).
+où $x_{ij}$ est une covariable environnementale et $\beta$ un paramètre supplémentaire à estimer.
 
-Reparamétrisation : gamma = log(sigma^2), Z_i = log(lambda_i)
+Hyperparamètres : $\sigma^2 \sim \text{Exp}(1)$, $\mu \sim \mathcal{N}(0,4)$, $\beta \sim \mathcal{N}(0,10)$
 
-Il y a 5 fonction. Ce sont: 
+Reparamétrisation : $\gamma = \log(\sigma^2)$, $Z_i = \log(\lambda_i)$
 
-- fonction log_posterior_ext : calculer la log posterior
-- fonction les gradients : calculer les gradients de -log_postierior par les parametres Zi, mu, sigma, Belta
-- fonction leapfrog_ext  : calculer les steps pour algo HMC
-- fonction HMC_step_ext  : algo HMC
-- fonction run_chain_ext : pour faire des chaines en même temps
-- fonction get_temp_site  : Récupérer et calculer les températures moyennes annuelles.
+Il y a 5 fonction. Ce sont:
+
+-   fonction log_posterior_ext : calculer la log posterior
+-   fonction les gradients : calculer les gradients de -log_postierior par les parametres $Z_i$, $\mu$, $\gamma$
+-   fonction leapfrog_ext : calculer les steps pour algo HMC
+-   fonction HMC_step_ext : algo HMC
+-   fonction run_chain_ext : pour faire des chaines en même temps
+-   fonction get_temp_site : Récupérer et calculer les températures moyennes annuelles
 
 Dans cette partie, nous avons exploité les coordonnées des sites afin de récupérer các données de température via la NASA en utilisant le package "nasapower". Malheureusement, ce package ne fournit plus các températures annuelles directes, mais seulement các données mensuelles. Par conséquent, nous các avons récupérées và calculé "à la main" các moyennes annuelles.(T2M)
-
-
 
 ```{r}
 # ------------------------------------------------------------------------------
@@ -112,7 +117,6 @@ get_temp_site <- function(lon, lat) {
 }
 ```
 
-
 ```{r}
 library(nasapower)
 library(sf)
@@ -123,8 +127,10 @@ all_temps <- list()
 
 for(i in 1:nrow(sites_coords)) {
   # Message de suivi dans la console
-  message("Récupération des températures pour le département : ", 
-          sites_coords$stateProvince[i], " (", i, "/23)...")
+  cat("Récupération des températures pour le département :",
+    sites_coords$stateProvince[i],
+    " (", i, "/23)...\n")
+  flush.console()
   
   # Appel de la fonction get_temp_site pour obtenir les données (vérification T2M incluse)
   temp_data <- get_temp_site(sites_coords$X[i], sites_coords$Y[i])
@@ -172,7 +178,7 @@ site_idx <- as.numeric(factor(final_data_for_model$stateProvince))
 cat("Nombre final d'observations introduites dans le modèle :", length(Y_ext), "\n")
 ```
 
-# La fonction de log-posteriori 
+# La fonction de log-posteriori
 
 ```{r}
 log_posterior_ext <- function(Z, beta, Y, X, site_idx, mu, gamma) { 
@@ -214,8 +220,7 @@ log_posterior_ext <- function(Z, beta, Y, X, site_idx, mu, gamma) {
 }
 ```
 
-
-# Les fonctions de gradients 
+# Les fonctions de gradients
 
 ```{r}
 # ------------------------------------------------------------------------------
@@ -273,7 +278,7 @@ grad_gamma_ext <- function(Z, mu, gamma) {
 }
 ```
 
-# Algorithme Hamilton Monte Carlo avec methode leapfrog 
+# Algorithme Hamilton Monte Carlo avec methode leapfrog
 
 ```{r}
 leapfrog_ext <- function(Z, beta, mu, gamma, P_Z, P_beta, P_mu, P_gamma, Y, X, site_idx, eps, L, f_grad_Z, f_grad_beta, f_grad_mu, f_grad_gamma) {
@@ -401,7 +406,7 @@ run_chain_ext <- function(id, n_iter, Y, X, site_idx, eps, L) {
 }
 ```
 
-# Main 
+# Main
 
 ```{r}
 # ------------------------------------------------------------------------------
@@ -451,7 +456,6 @@ plot(sigma_trace2_ext, type="l",col="darkblue", main="Traceplot sigma")
 hist(sigma_trace2_ext,col="darkblue", main="Posterior sigma")
 
 ```
-
 
 ```{r}
 # Export les resultats de chaine 1
@@ -506,7 +510,6 @@ cat(sprintf("Moyen de σ^2  sans l'effet de la température : %.3f\n", sigma_old
 cat(sprintf("Moyen de σ^2  après inclusion de la température (Xij) : %.3f\n", sigma_new))
 ```
 
-
 ```{r}
 # mu du modèle précédent (calculé dans la section précédente)
 mu_old <- 1.391148
@@ -518,7 +521,6 @@ mu_new <- mean(all_results_ext[[1]]$mu)
 cat(sprintf("Moyenne de μ sans l'effet de la température : %.3f\n", mu_old))
 cat(sprintf("Moyenne de μ après inclusion de la température (Xij) : %.3f\n", mu_new))
 ```
-
 
 ```{r}
 # Transformation des paramètres et construction de la matrice finale
@@ -538,7 +540,6 @@ colnames(samples_matrix2) <- c(paste0("λ", 1:n_l), "μ", "σ^2","beta")
 
 head(round(samples_matrix2,5))
 ```
-
 
 ```{r}
 # Eliminer 1000 premiere ligne 

@@ -13,20 +13,30 @@ execute:
   message: false
 ---
 
-
 # Construction du modèle hiérarchique bayésien
-::: {#fig-model}
-![Structure du modèle hiérarchique bayésien](model1.png){width="90%" fig-align="center"}
-:::
 
-Variante : sigma\^2 suit une loi Exponentielle(1)
+Pour l’année $i$ et le site $j$, on note $Y_{i,j}$ le nombre d’occurrences du moustique tigre.
 
-Reparamétrisation : gamma = log(sigma\^2), Z_i = log(lambda_i)
+On propose le modèle hiérarchique suivant :
+
+$$
+Y_{i,j} \mid \lambda_i \sim \text{Poisson}(\lambda_i),
+$$
+
+$$
+\log(\lambda_i) \mid \mu, \sigma^2 \sim \mathcal{N}(\mu, \sigma^2).
+$$
+
+On cherche à estimer $\mu$ et $\sigma^2$, et à prédire les $\lambda_i$.Ces derniers, appelés effets aléatoires, représentent la moyenne (et également la variance) annuelle des occurrences.
+
+Hyperparamètres : $\sigma^2 \sim \text{Exp}(1)$, $\mu \sim \mathcal{N}(0,4)$
+
+Reparamétrisation : $\gamma = \log(\sigma^2)$, $Z_i = \log(\lambda_i)$
 
 Il y a 5 fonction. Ce sont:
 
 -   fonction log_posterior : calculer la log posterior
--   fonction les gradients : calculer les gradients de -log_postierior par les parametres Zi, mu, sigma
+-   fonction les gradients : calculer les gradients de -log_postierior par les parametres $Z_i$, $\mu$, $\gamma$
 -   fonction leapfrog. : calculer les steps pour algo HMC
 -   fonction HMC_step : algo HMC
 -   fonction run_chain : pour faire des chaines en même temps

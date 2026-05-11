@@ -13,27 +13,23 @@ execute:
   message: false
 ---
 
-
-
 # PROJET STATISTIQUES COMPUTATIONNELLES
 
 Algorithme HMC - Modèle Hiérarchique Poisson-Normal
 
-Variante : sigma^2 suit une loi Exponentielle(1)
+Hyperparamètres : $\sigma^2 \sim \text{Exp}(1)$, $\mu \sim \mathcal{N}(0,4)$
 
-Reparamétrisation : gamma = log(sigma^2), Z_i = log(lambda_i)
+Reparamétrisation : $\gamma = \log(\sigma^2)$, $Z_i = \log(\lambda_i)$
 
+Il y a 5 fonction. Ce sont:
 
-Il y a 5 fonction. Ce sont: 
+-   fonction log_posterior_target : calculer la log posterior
+-   fonction gradient_target : calculer les gradients de log_postierior par les parametres $Z_i$, $\mu$, $\gamma$
+-   fonction leapfrog : calculer les steps pour algo HMC
+-   fonction hmc_sampler : algo HMC
+-   fonction run_hmc_chains_sequentially : pour faire des chaines en même temps
 
-- fonction log_posterior_target            : calculer la log posterior
-- fonction gradient_target                 : calculer les gradients de log_postierior par les parametres Zi, mu, sigma
-- fonction leapfrog                        : calculer les steps pour algo HMC
-- fonction hmc_sampler                     : algo HMC
-- fonction run_hmc_chains_sequentially     : pour faire des chaines en même temps
-
-
-## Importation 
+## Importation
 
 ```{r,results='hide',message = FALSE}
 
@@ -45,8 +41,8 @@ library(coda)
 
 ```
 
-
 ## 1. CHARGEMENT ET PRÉ-TRAITEMENT DES DONNÉES
+
 ```{r}
 
 # ------------------------------------------------------------------------------
@@ -75,13 +71,10 @@ sum_y_list <- sapply(y_list, sum)
 
 ```
 
-
 ## 2. DÉFINITION DES FONCTIONS MATHÉMATIQUES
 
-Définitions des fonctions : 
-- Log à postériori 
-- dérivées partielles 
-- gradient
+Définitions des fonctions : - Log à postériori - dérivées partielles - gradient
+
 ```{r}
 # Calcul de la Log-Postériori (L)
 log_posterior_target <- function(theta, J_list, sum_y_list, I) {
@@ -124,7 +117,6 @@ gradient_target <- function(theta, J_list, sum_y_list, I) {
 
 
 ```
-
 
 ## 3. Implémentation des algorithmes
 
@@ -214,7 +206,6 @@ hmc_sampler <- function(init_theta, iterations, step_size, L_steps, J_list, sum_
 
 ```
 
-
 ## 4. EXÉCUTION DU MODÈLE (Wrapper multi-chaînes)
 
 ```{r}
@@ -258,8 +249,6 @@ run_hmc_chains_sequentially <- function(n_chains, iterations, step_size, L_steps
 }
 ```
 
-
-
 ```{r}
 # --- PARAMÈTRES ET LANCEMENT DU TEST ---
 # On utilise un step_size prudent (0.01 ou 0.05) pour éviter l'explosion de Poisson
@@ -277,8 +266,6 @@ cat("\nAperçu des paramètres hyper-globaux (Chaîne 1) :\n")
 print(head(resultats_finaux[[1]][, c("mu", "tau2")]))
 
 ```
-
-
 
 # Résultats
 
@@ -326,12 +313,7 @@ ggplot(samples_long, aes(x = Valeur)) +
     )
 ```
 
-
-
-
-
 ## Anlayse des performances
-
 
 ### DIAGNOSTICS DE CONVERGENCE ET PERFORMANCES (Question 7)
 
@@ -382,7 +364,6 @@ trace_plot <- ggplot(trace_df, aes(x = Iteration, y = Valeur, color = as.factor(
 print(trace_plot)
 ```
 
-
 ### LES PERFORMANCES : AUTOCORRÉLATION (ACF)
 
 ```{r}
@@ -397,10 +378,6 @@ autocorr.plot(mcmc_chains[[1]][, params_to_check],
               )
 par(mfrow = c(1, 1)) # Réinitialisation des paramètres graphiques
 ```
-
-
-
-
 
 ### ANALYSE DES RÉSULTATS (Question 8)
 
@@ -457,8 +434,6 @@ cat(sprintf("\n[Analyse] La variance inter-année (tau^2) est estimée en moyenn
 
 
 ```
-
-
 
 ## 7. QUALITÉ PRÉDICTIVE DU MODÈLE (Question 9)
 
@@ -550,7 +525,3 @@ ppc_plot <- ggplot(ppc_long, aes(x = Valeur)) +
 
 print(ppc_plot) 
 ```
-
-
-
-
