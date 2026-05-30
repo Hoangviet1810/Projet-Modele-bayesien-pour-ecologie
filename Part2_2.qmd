@@ -36,7 +36,7 @@ library(coda)
 
 ```
 
-## 1. CHARGEMENT ET PRÉ-TRAITEMENT DES DONNÉES
+##  CHARGEMENT ET PRÉ-TRAITEMENT DES DONNÉES
 
 ```{r}
 
@@ -66,7 +66,7 @@ sum_y_list <- sapply(y_list, sum)
 
 ```
 
-## 2. DÉFINITION DES FONCTIONS MATHÉMATIQUES
+##  DÉFINITION DES FONCTIONS MATHÉMATIQUES
 
 Définitions des fonctions : - Log à postériori - dérivées partielles - gradient
 
@@ -113,7 +113,7 @@ gradient_target <- function(theta, J_list, sum_y_list, I) {
 
 ```
 
-## 3. Implémentation des algorithmes
+##  Implémentation des algorithmes
 
 ```{r}
 
@@ -201,7 +201,7 @@ hmc_sampler <- function(init_theta, iterations, step_size, L_steps, J_list, sum_
 
 ```
 
-## 4. EXÉCUTION DU MODÈLE (Wrapper multi-chaînes)
+##  EXÉCUTION DU MODÈLE (Wrapper multi-chaînes)
 
 ```{r}
 
@@ -430,7 +430,7 @@ cat(sprintf("\n[Analyse] La variance inter-année (tau^2) est estimée en moyenn
 
 ```
 
-## 7. QUALITÉ PRÉDICTIVE DU MODÈLE (Question 9)
+##  QUALITÉ PRÉDICTIVE DU MODÈLE (Question 9)
 
 ```{r}
 
