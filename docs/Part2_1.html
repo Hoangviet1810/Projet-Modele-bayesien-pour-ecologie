@@ -174,10 +174,6 @@ window.Quarto = {
     <a class="nav-link" href="./Part3.html"> 
 <span class="menu-text">Modèle Extension</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Part4.qmd"> 
-<span class="menu-text">Conclusion</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -301,7 +297,7 @@ Y_{i,j} \mid \lambda_i \sim \text{Poisson}(\lambda_i),
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>j <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">factor</span>(df<span class="sc">$</span>stateProvince))</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>df[, <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"stateProvince"</span>, <span class="st">"i"</span>, <span class="st">"j"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 87 × 4
+<pre><code># A tibble: 89 × 4
     year stateProvince                  i     j
    &lt;int&gt; &lt;chr&gt;                      &lt;int&gt; &lt;int&gt;
  1  2014 Languedoc-Roussillon           1    12
@@ -314,7 +310,7 @@ Y_{i,j} \mid \lambda_i \sim \text{Poisson}(\lambda_i),
  8  2019 Aquitaine                      6     2
  9  2019 Corse                          6     8
 10  2019 Languedoc-Roussillon           6    12
-# ℹ 77 more rows</code></pre>
+# ℹ 79 more rows</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -558,36 +554,36 @@ Y_{i,j} \mid \lambda_i \sim \text{Poisson}(\lambda_i),
   Chaîne 1 | Progression : 50000 / 100000 (50%) | Taux d'acc. : 98.6%
   Chaîne 1 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.6%
   Chaîne 1 | Progression : 100000 / 100000 (100%) | Taux d'acc. : 98.6%
-=&gt; Chaîne 1 terminée avec succès. Taux d'acceptation final : 98.60%
-Chaîne 1 terminée en 1.04 minutes.
+=&gt; Chaîne 1 terminée avec succès. Taux d'acceptation final : 98.59%
+Chaîne 1 terminée en 1.01 minutes.
 Exécution de la Chaîne 2...
   Chaîne 2 | Progression : 25000 / 100000 (25%) | Taux d'acc. : 98.5%
   Chaîne 2 | Progression : 50000 / 100000 (50%) | Taux d'acc. : 98.6%
-  Chaîne 2 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.7%
+  Chaîne 2 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.6%
   Chaîne 2 | Progression : 100000 / 100000 (100%) | Taux d'acc. : 98.6%
-=&gt; Chaîne 2 terminée avec succès. Taux d'acceptation final : 98.64%
-Chaîne 2 terminée en 1.08 minutes.
+=&gt; Chaîne 2 terminée avec succès. Taux d'acceptation final : 98.63%
+Chaîne 2 terminée en 0.99 minutes.
 Exécution de la Chaîne 3...
   Chaîne 3 | Progression : 25000 / 100000 (25%) | Taux d'acc. : 98.6%
   Chaîne 3 | Progression : 50000 / 100000 (50%) | Taux d'acc. : 98.6%
   Chaîne 3 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.6%
   Chaîne 3 | Progression : 100000 / 100000 (100%) | Taux d'acc. : 98.6%
 =&gt; Chaîne 3 terminée avec succès. Taux d'acceptation final : 98.61%
-Chaîne 3 terminée en 1.12 minutes.
+Chaîne 3 terminée en 0.99 minutes.
 Exécution de la Chaîne 4...
   Chaîne 4 | Progression : 25000 / 100000 (25%) | Taux d'acc. : 98.6%
   Chaîne 4 | Progression : 50000 / 100000 (50%) | Taux d'acc. : 98.6%
   Chaîne 4 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.6%
   Chaîne 4 | Progression : 100000 / 100000 (100%) | Taux d'acc. : 98.6%
-=&gt; Chaîne 4 terminée avec succès. Taux d'acceptation final : 98.65%
+=&gt; Chaîne 4 terminée avec succès. Taux d'acceptation final : 98.63%
 Chaîne 4 terminée en 1.01 minutes.
 Exécution de la Chaîne 5...
   Chaîne 5 | Progression : 25000 / 100000 (25%) | Taux d'acc. : 98.7%
   Chaîne 5 | Progression : 50000 / 100000 (50%) | Taux d'acc. : 98.6%
   Chaîne 5 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.6%
   Chaîne 5 | Progression : 100000 / 100000 (100%) | Taux d'acc. : 98.6%
-=&gt; Chaîne 5 terminée avec succès. Taux d'acceptation final : 98.59%
-Chaîne 5 terminée en 0.98 minutes.</code></pre>
+=&gt; Chaîne 5 terminée avec succès. Taux d'acceptation final : 98.60%
+Chaîne 5 terminée en 1.00 minutes.</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -672,8 +668,8 @@ Chaîne 5 terminée en 0.98 minutes.</code></pre>
   Chaîne 1 | Progression : 2500 / 5000 (50%) | Taux d'acc. : 98.9%
   Chaîne 1 | Progression : 3750 / 5000 (75%) | Taux d'acc. : 98.7%
   Chaîne 1 | Progression : 5000 / 5000 (100%) | Taux d'acc. : 98.5%
-=&gt; Chaîne 1 terminée avec succès. Taux d'acceptation final : 98.48%
-Chaîne 1 terminée en 0.07 minutes.</code></pre>
+=&gt; Chaîne 1 terminée avec succès. Taux d'acceptation final : 98.46%
+Chaîne 1 terminée en 0.05 minutes.</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -768,19 +764,19 @@ Chaîne 1 terminée en 0.07 minutes.</code></pre>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">round</span>(samples_matrix,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          λ1      λ2      λ3      λ4      λ5      λ6       λ7      λ8      λ9
-[1,] 2.22549 1.57540 3.53341 2.78969 3.83613 3.75956 10.02922 4.73288 7.64421
-[2,] 1.36835 0.82759 0.96406 1.56439 4.02084 3.02927 10.27240 4.52016 8.25402
-[3,] 2.95178 3.64588 3.28480 1.44615 2.63148 3.90580 10.49360 4.46000 8.38360
-[4,] 2.92732 1.73453 1.49486 1.37791 1.42520 2.49786  9.53165 4.86190 8.07620
-[5,] 3.28738 2.96772 3.60250 0.97686 1.36815 4.15500 11.46805 4.47156 7.97902
-[6,] 2.70567 1.34390 0.84092 2.20425 3.84616 3.06492  9.45293 4.32563 7.71374
+[1,] 2.17583 1.54741 3.42926 2.71449 3.79049 3.79115 10.06495 4.76428 7.65873
+[2,] 1.32318 0.79728 0.90263 1.44156 3.80469 3.04311 10.28150 4.54020 8.26568
+[3,] 3.00040 3.68854 3.37778 1.52329 2.70230 3.95543 10.53657 4.46155 8.39005
+[4,] 2.85303 1.65963 1.40959 1.37263 1.42587 2.47779  9.53242 4.83528 8.07520
+[5,] 3.19667 2.90168 3.52401 0.94596 1.34644 4.15175 11.45194 4.47669 7.99076
+[6,] 2.64586 1.30821 0.80180 2.18221 3.83612 3.16682  9.47452 4.32435 7.72265
           λ10     λ11     λ12     λ13       μ     σ^2
-[1,] 27.05457 6.54593 6.49277 2.36405 1.40820 0.73559
-[2,] 26.68365 7.59368 7.96611 2.00641 1.37609 1.03807
-[3,] 25.55437 8.00051 5.65573 2.91256 1.31426 0.85652
-[4,] 22.06189 7.12890 7.33324 2.23372 1.67882 1.24661
-[5,] 25.11261 6.81901 6.11258 1.90140 1.18652 1.25056
-[6,] 26.55168 6.58627 8.28234 1.92388 1.34736 1.22977</code></pre>
+[1,] 27.06473 6.55422 6.54379 3.35530 1.43551 0.74638
+[2,] 26.69840 7.59769 8.08469 2.47053 1.41700 1.09658
+[3,] 25.56154 8.00237 5.71220 2.24972 1.34875 0.86834
+[4,] 22.06601 7.12903 7.28081 2.20411 1.64465 1.30605
+[5,] 25.12336 6.83010 6.22600 2.83137 1.29732 1.30109
+[6,] 26.56112 6.59239 8.32834 2.72348 1.44710 1.27924</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -848,21 +844,21 @@ Chaîne 1 terminée en 0.07 minutes.</code></pre>
 <span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Parameter   Estimate   CI_lower  CI_upper
-λ1         λ1  2.6078478  0.7028155  5.960371
-λ2         λ2  1.9792655  0.3911351  4.916392
-λ3         λ3  1.9710811  0.4307674  4.671943
-λ4         λ4  1.5888592  0.4265765  3.495845
-λ5         λ5  2.3595868  0.8079957  4.671286
-λ6         λ6  3.4450481  2.0449796  5.121073
-λ7         λ7 10.3107094  8.0811543 12.831075
-λ8         λ8  5.2747130  3.9122484  6.813946
-λ9         λ9  8.4831448  6.8465976 10.216663
-λ10       λ10 26.6988422 24.1396825 29.470644
-λ11       λ11  7.1663027  5.8936074  8.602491
-λ12       λ12  6.8073088  5.6892245  8.024929
-λ13       λ13  2.5479177  1.1839058  4.614900
-μ           μ  1.3716713  0.7170287  1.929399
-σ^2       σ^2  0.9829925  0.6291150  1.490007</code></pre>
+λ1         λ1  2.5840567  0.7102412  5.875979
+λ2         λ2  1.9559413  0.3854610  4.905883
+λ3         λ3  1.9548799  0.4137098  4.706506
+λ4         λ4  1.5728169  0.4206321  3.504243
+λ5         λ5  2.3465125  0.8022723  4.686968
+λ6         λ6  3.4393435  2.0378322  5.130146
+λ7         λ7 10.3111392  8.0858411 12.844453
+λ8         λ8  5.2771550  3.9088180  6.824143
+λ9         λ9  8.4817925  6.8570452 10.219580
+λ10       λ10 26.7008255 24.1433423 29.481854
+λ11       λ11  7.1658183  5.8921874  8.600457
+λ12       λ12  6.8585157  5.7313904  8.088596
+λ13       λ13  2.1329726  1.0963127  3.431706
+μ           μ  1.3552806  0.7246796  1.923366
+σ^2       σ^2  0.9926103  0.6394064  1.529252</code></pre>
 </div>
 </div>
 <div class="cell">
