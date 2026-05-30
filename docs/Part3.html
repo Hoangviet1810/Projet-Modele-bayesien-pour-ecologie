@@ -174,6 +174,10 @@ window.Quarto = {
     <a class="nav-link active" href="./Part3.html" aria-current="page"> 
 <span class="menu-text">Modèle Extension</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Part4.qmd"> 
+<span class="menu-text">Conclusion</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -206,7 +210,7 @@ window.Quarto = {
     <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
-  <li><a href="#partie-modele-extension" id="toc-partie-modele-extension" class="nav-link active" data-scroll-target="#partie-modele-extension"><span class="header-section-number">1</span> Partie Modele Extension</a></li>
+  <li><a href="#modele-extension" id="toc-modele-extension" class="nav-link active" data-scroll-target="#modele-extension"><span class="header-section-number">1</span> Modele Extension</a></li>
   <li><a href="#récuperer-les-données-pour-la-covariable-environnementale-xij" id="toc-récuperer-les-données-pour-la-covariable-environnementale-xij" class="nav-link" data-scroll-target="#récuperer-les-données-pour-la-covariable-environnementale-xij"><span class="header-section-number">2</span> Récuperer les données pour la covariable environnementale Xij</a></li>
   <li><a href="#la-fonction-de-log-posteriori" id="toc-la-fonction-de-log-posteriori" class="nav-link" data-scroll-target="#la-fonction-de-log-posteriori"><span class="header-section-number">3</span> La fonction de log-posteriori</a></li>
   <li><a href="#les-fonctions-de-gradients" id="toc-les-fonctions-de-gradients" class="nav-link" data-scroll-target="#les-fonctions-de-gradients"><span class="header-section-number">4</span> Les fonctions de gradients</a></li>
@@ -246,8 +250,8 @@ window.Quarto = {
 </header>
 
 
-<section id="partie-modele-extension" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Partie Modele Extension</h1>
+<section id="modele-extension" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Modele Extension</h1>
 <p>On pourra considérer l’extension suivante pour expliquer une partie de la variabilité entre années :</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -730,7 +734,7 @@ Configuration : n_iter = 5000, eps = 0.0100, L = 100
   Chaîne 1 | Progression : 4500 / 5000 (90%) | Taux d'acc. : 98.9%
   Chaîne 1 | Progression : 5000 / 5000 (100%) | Taux d'acc. : 99.0%
 =&gt; Chaîne 1 terminée avec succès. Taux d'acceptation final : 98.96%
-=&gt; Chaîne 1 terminée en 1.77 minutes.</code></pre>
+=&gt; Chaîne 1 terminée en 1.79 minutes.</code></pre>
 </div>
 </div>
 </section>
@@ -784,7 +788,7 @@ Configuration : n_iter = 5000, eps = 0.0100, L = 100
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(res_beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                  Paramètre Estimate Std.Error Lower_CI_95 Upper_CI_95 Median
-2.5% Beta (Température Xij)   1.3017     0.118      1.0729      1.5337 1.3022</code></pre>
+2.5% Beta (Température Xij)   1.2993    0.1179      1.0711      1.5311 1.3001</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -824,7 +828,7 @@ Configuration : n_iter = 5000, eps = 0.0100, L = 100
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Moyen de σ^2  après inclusion de la température (Xij) : %.3f</span><span class="sc">\n</span><span class="st">"</span>, sigma_new))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Moyen de σ^2  après inclusion de la température (Xij) : 1.337</code></pre>
+<pre><code>Moyen de σ^2  après inclusion de la température (Xij) : 1.334</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -841,7 +845,7 @@ Configuration : n_iter = 5000, eps = 0.0100, L = 100
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"Moyenne de μ après inclusion de la température (Xij) : %.3f</span><span class="sc">\n</span><span class="st">"</span>, mu_new))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Moyenne de μ après inclusion de la température (Xij) : 1.322</code></pre>
+<pre><code>Moyenne de μ après inclusion de la température (Xij) : 1.328</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -863,26 +867,26 @@ Configuration : n_iter = 5000, eps = 0.0100, L = 100
 <span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">round</span>(samples_matrix2,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            λ1      λ2      λ3      λ4       λ5      λ6      λ7      λ8
-[1,] 107.15464 3.02431 3.60096 4.55080 10.04277 1.90509 5.34673 0.03739
-[2,]  17.54264 5.03236 1.63742 6.29525 31.08075 2.70174 1.42118 0.71351
-[3,]  52.64754 3.82422 3.46916 4.19496  2.39720 0.26835 2.40381 0.14046
-[4,]  14.07228 5.12094 1.67007 2.53921  9.81177 0.48963 1.82414 0.89153
-[5,]  42.48738 3.78311 3.10263 3.59142  5.56038 1.70762 1.36740 0.23794
-[6,]  28.93554 4.89721 5.57640 6.90141  8.22608 1.48923 1.27125 0.47530
+[1,] 106.76586 3.02866 3.60707 4.55889 10.05442 1.90961 5.35718 0.03762
+[2,]  17.50057 5.03574 1.63860 6.28578 30.91396 2.70296 1.42166 0.71513
+[3,]  52.48114 3.82815 3.47344 4.18910  2.40547 0.26867 2.40701 0.14114
+[4,]  14.01027 5.12624 1.67163 2.53625  9.81210 0.49106 1.82634 0.89644
+[5,]  42.40164 3.78764 3.10926 3.59057  5.53142 1.71592 1.37114 0.23895
+[6,]  28.78595 4.90446 5.57398 6.88432  8.20149 1.49216 1.27487 0.47851
            λ9     λ10      λ11     λ12     λ13     λ14      λ15     λ16     λ17
-[1,] 10.79931 1.39233 70.59017 1.10913 0.55669 3.34390  6.84999 3.88828 3.54655
-[2,]  4.81728 0.51904 22.22231 3.83463 0.62383 4.45086 20.60402 2.77039 3.86996
-[3,]  5.45963 1.78113 40.17469 1.93440 2.85862 4.37654 10.67419 3.23747 3.02189
-[4,]  2.05584 1.16696 20.65915 4.02357 0.82370 6.30366 26.59008 2.35047 3.75413
-[5,]  0.71256 1.00996 42.14568 2.04861 0.42562 4.41476 11.50495 1.98477 3.66915
-[6,]  0.26306 2.85660 24.19200 2.97655 0.12116 6.29994 16.67404 2.44191 3.77974
+[1,] 10.82022 1.39560 70.36063 1.11336 0.55841 3.34990  6.87699 4.35315 3.54906
+[2,]  4.82061 0.51963 22.17857 3.84078 0.62568 4.45333 20.64627 3.07946 3.87116
+[3,]  5.46133 1.78446 40.07151 1.94038 2.86566 4.38145 10.70985 3.57096 3.02348
+[4,]  2.05711 1.16774 20.59914 4.03305 0.82485 6.30953 26.65716 2.79838 3.75626
+[5,]  0.71480 1.01294 42.00720 2.05406 0.42772 4.41995 11.53775 2.39080 3.67016
+[6,]  0.26435 2.85617 24.08746 2.98445 0.12192 6.30670 16.72458 3.08695 3.78299
          λ18     λ19     λ20       λ21     λ22     λ23       μ     σ^2    beta
-[1,] 4.26173 0.25398 6.53054 164.40927 0.48819 0.85620 0.62935 1.63550 1.97577
-[2,] 6.67727 0.34125 0.30285  57.42442 1.78742 0.30941 1.57781 1.52412 0.94591
-[3,] 4.91203 0.81718 1.59363 124.14663 1.85643 0.85834 0.63666 1.44049 1.62293
-[4,] 8.23764 0.33757 0.90523  51.03187 2.96116 0.48689 1.43386 1.33912 0.79953
-[5,] 5.54483 0.89713 1.31522  85.99239 0.63975 0.29784 0.36670 1.50886 1.45027
-[6,] 5.82539 1.01623 1.33737  77.61109 0.44408 0.24421 1.16808 1.45951 1.21429</code></pre>
+[1,] 4.27275 0.25484 6.54547 163.87190 0.48977 0.85880 0.63505 1.63604 1.97271
+[2,] 6.68459 0.34255 0.30366  57.32368 1.79392 0.31029 1.58442 1.52212 0.94410
+[3,] 4.92184 0.82086 1.60012 123.81034 1.86296 0.86135 0.64125 1.44073 1.62031
+[4,] 8.25050 0.33914 0.90923  50.90146 2.97059 0.48858 1.44149 1.33542 0.79737
+[5,] 5.55441 0.90380 1.32352  85.76830 0.64229 0.29982 0.37681 1.50558 1.44797
+[6,] 5.83609 1.02229 1.34616  77.40225 0.44654 0.24580 1.18246 1.45651 1.21187</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -906,32 +910,32 @@ Configuration : n_iter = 5000, eps = 0.0100, L = 100
 <span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(results2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Parameter   Estimate   CI_lower    CI_upper
-λ1          λ1 27.3341651 14.4766172  45.1840051
-λ2          λ2  4.2758916  2.8632494   5.7462651
-λ3          λ3  3.1409143  0.6374536   7.9981700
-λ4          λ4  4.1926996  1.0469281   9.9937213
-λ5          λ5 10.7165066  3.2455650  23.2886470
-λ6          λ6  2.4161373  0.5426664   5.9354358
-λ7          λ7  2.4007869  0.3369769   6.7732943
-λ8          λ8  0.4197475  0.2278860   0.6977883
-λ9          λ9  5.4063618  0.6055669  17.2157163
-λ10        λ10  1.3057496  0.2977507   3.1074034
-λ11        λ11 31.6263372 20.4390244  45.5565325
-λ12        λ12  2.5158829  1.7899514   3.4083611
-λ13        λ13  1.4997758  0.2514753   4.0865962
-λ14        λ14  4.6389813  3.4667637   5.9417974
-λ15        λ15 14.2894668 10.3409193  19.2218065
-λ16        λ16  2.8880898  1.2030378   5.2532579
-λ17        λ17  3.9286867  2.3101056   5.9089555
-λ18        λ18  5.4331298  4.1931864   6.8521563
-λ19        λ19  2.0553648  0.3069414   5.6910083
-λ20        λ20  6.5268161  0.7210637  21.7012483
-λ21        λ21 85.2852366 62.7961281 113.6178685
-λ22        λ22  5.8773982  0.6152049  19.3967019
-λ23        λ23  0.7093872  0.1328212   1.8507997
-μ            μ  1.3238142  0.7420750   1.8920769
-σ^2        σ^2  1.3359495  0.9773802   1.8116961
-beta      beta  1.3032273  1.0741105   1.5326635</code></pre>
+λ1          λ1 27.2473259 14.4800080  45.2343091
+λ2          λ2  4.2901714  2.8494779   5.7401032
+λ3          λ3  3.1447095  0.6399998   7.9877151
+λ4          λ4  4.1886666  1.0481046  10.0077507
+λ5          λ5 10.6854100  3.2384367  23.3288050
+λ6          λ6  2.4182915  0.5432978   5.9405231
+λ7          λ7  2.4056024  0.3390898   6.7759247
+λ8          λ8  0.4214192  0.2292162   0.7002469
+λ9          λ9  5.4070260  0.6091518  17.2471325
+λ10        λ10  1.3085932  0.2985321   3.0984037
+λ11        λ11 31.5856773 20.4104643  45.6737070
+λ12        λ12  2.5230577  1.7932710   3.4107305
+λ13        λ13  1.5043541  0.2552028   4.0992531
+λ14        λ14  4.6448089  3.4724546   5.9478086
+λ15        λ15 14.3323413 10.3456620  19.2064859
+λ16        λ16  3.2648278  1.3911152   5.9293864
+λ17        λ17  3.9307415  2.3108222   5.9189493
+λ18        λ18  5.4430633  4.2025122   6.8717340
+λ19        λ19  2.0603106  0.3096782   5.6890575
+λ20        λ20  6.5244579  0.7249694  21.5925942
+λ21        λ21 85.0521537 62.8508181 113.0297791
+λ22        λ22  5.8762131  0.6164271  19.3044901
+λ23        λ23  0.7128652  0.1334369   1.8659187
+μ            μ  1.3302885  0.7504969   1.8967161
+σ^2        σ^2  1.3329406  0.9737985   1.8052433
+beta      beta  1.3007672  1.0726654   1.5288916</code></pre>
 </div>
 </div>
 </section>

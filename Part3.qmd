@@ -8,7 +8,7 @@ execute:
   message: true
 ---
 
-# Partie Modele Extension
+# Modele Extension
 
 On pourra considérer l'extension suivante pour expliquer une partie de la variabilité entre années :
 
