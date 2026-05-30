@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9344fb9851b4da3cab95007ef9d770dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b40c13d1a340c1202815d47d89cb925e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,6 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -110,6 +111,22 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Modèle Extension</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Hoangviet1810/Projet-Modele-bayesien-pour-ecologie"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://ndhviet.wixsite.com/hviet-portfolio"> 
+<span class="menu-text">Portfolio de Viet</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/hoang-viet1810/?isSelfProfile=false"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
@@ -122,10 +139,11 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">Sur cette page</h2>
    
   <ul>
   <li><a href="#présentation-du-projet" id="toc-présentation-du-projet" class="nav-link active" data-scroll-target="#présentation-du-projet">Présentation du projet</a></li>
+  <li><a href="#organisation-des-codes" id="toc-organisation-des-codes" class="nav-link" data-scroll-target="#organisation-des-codes">Organisation des codes</a></li>
   </ul>
 </nav>
     </div>
@@ -160,8 +178,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="présentation-du-projet" class="level1">
 <h1>Présentation du projet</h1>
 <p>On s’intéresse dans ce projet à la modélisation de la présence du moustique tigre (<em>Aedes albopictus</em>) en France métropolitaine.</p>
-<p>Pour cela, on dispose de données d’occurences du moustique tigre, que l’on peut trouver par exemple sur le site de GBIF (Global Biodiversity Information Facility, https://www.gbif.org/).</p>
+<p>Pour cela, on dispose de données d’occurences du moustique tigre, que l’on peut trouver par exemple sur le site de GBIF (Global Biodiversity Information Facility, <a href="https://www.gbif.org/" class="uri">https://www.gbif.org/</a>).</p>
 <p>Le but est d’analyser la variabilité inter-site et intra-site des occurrences, en utilisant un modèle hiérarchique bayésien.</p>
+</section>
+<section id="organisation-des-codes" class="level1">
+<h1>Organisation des codes</h1>
 <p>Le projet est divisé en plusieurs parties :</p>
 <ul>
 <li><p><strong>Partie 1 :</strong> Extraction des données et pré-traitement</p>

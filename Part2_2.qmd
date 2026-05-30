@@ -1,13 +1,8 @@
 ---
-title: "Partie 2 Construction du modèle hiérarchique bayésien version 2 "
+title: "Partie 2 Construction du modèle hiérarchique bayésien version 2"
 author: "Tchanang Yvan Michel"
-format:
-  html:
-    theme: cosmo        # Giao diện sạch sẽ, chuyên nghiệp
-    toc: true           # Hiện mục lục bên trái/phải
-    number-sections: true # Tự động đánh số 1, 2, 3...
-    code-fold: false     # Cho phép ẩn/hiện code (rất giống Notebook)
-    embed-resources: true # Để lưu thành 1
+number-sections: true
+code-fold: false
 execute:
   warning: false
   message: false

@@ -1,13 +1,8 @@
 ---
 title: "Partie 3 : Modèle Extension"
 author: "NGUYEN Duc Hoang Viet"
-format:
-  html:
-    theme: cosmo        # Giao diện sạch sẽ, chuyên nghiệp
-    toc: true           # Hiện mục lục bên trái/phải
-    number-sections: true # Tự động đánh số 1, 2, 3...
-    code-fold: false     # Cho phép ẩn/hiện code (rất giống Notebook)
-    embed-resources: true # Để lưu thành 1
+number-sections: true
+code-fold: false
 execute:
   warning: false
   message: true
@@ -561,3 +556,31 @@ results2 <- data.frame(
 
 print(results2)
 ```
+
+# Conclusion
+
+Ce projet a permis de développer un modèle bayésien hiérarchique pour étudier la dynamique d’invasion du moustique tigre sur 12 ans. Les résultats montrent une progression importante de l’espèce au fil du temps, avec une forte variabilité entre les années et entre les régions. L’utilisation de l’algorithme HMC a assuré une bonne convergence du modèle et des estimations fiables.
+
+L’analyse met également en évidence l’importance des facteurs environnementaux. La température exerce un effet positif significatif sur l’abondance du moustique, confirmant son rôle majeur dans le processus d’invasion. L’ajout de cette covariable améliore la capacité explicative du modèle et permet de mieux prendre en compte les différences observées entre les territoires.
+
+Enfin, malgré certaines limites liées aux événements extrêmes et à l’hétérogénéité spatiale, le modèle fournit un cadre robuste pour comprendre et anticiper l’expansion du moustique tigre. Il constitue ainsi un outil pertinent pour la surveillance écologique et l’aide à la décision en matière de santé publique.
+
+# Références
+
+1. Neal, R. M. *MCMC using Hamiltonian Dynamics*. University of Toronto, Canada.
+   <https://arxiv.org/pdf/1206.1901>
+
+2. Walker, E., Soubeyrand, S. *Hamiltonian Monte Carlo in Practice*. Institut National de la Recherche Agronomique (INRA), Avignon, France.
+   <https://biosp.mathnum.inrae.fr/sites/default/files/2021-03/RR2016_49.pdf>
+
+3. Chen, Y. C. *Lecture 9: Hamiltonian Monte Carlo (Leapfrog)*. University of Washington.
+   <https://faculty.washington.edu/yenchic/19A_stat535/Lec9_HMC.pdf>
+
+4. IBM Documentation. *Statistiques bayésiennes (SPSS Statistics)*. IBM Docs.
+   <https://www.ibm.com/docs/fr/spss-statistics/cd?topic=ctas-bayesian-statistics>
+
+5. IRD (Institut de Recherche pour le Développement). *Changement climatique : le moustique tigre gagne du terrain en Europe*.
+   <https://lemag.ird.fr/fr/changement-climatique-le-moustique-tigre-gagne-du-terrain-en-europe>
+
+6. ANSES (Agence nationale de sécurité sanitaire). *Le moustique tigre (Aedes albopictus)*.
+   <https://www.anses.fr/fr/content/le-moustique-tigre>

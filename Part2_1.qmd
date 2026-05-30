@@ -1,13 +1,8 @@
 ---
-title: "Partie 2 Construction du modèle hiérarchique bayésien version 1 "
+title: "Partie 2 Construction du modèle hiérarchique bayésien version 1"
 author: "NGUYEN Duc Hoang Viet"
-format:
-  html:
-    theme: cosmo        # Giao diện sạch sẽ, chuyên nghiệp
-    toc: true           # Hiện mục lục bên trái/phải
-    number-sections: true # Tự động đánh số 1, 2, 3...
-    code-fold: false     # Cho phép ẩn/hiện code (rất giống Notebook)
-    embed-resources: true # Để lưu thành 1
+number-sections: true
+code-fold: false
 execute:
   warning: false
   message: false
@@ -484,6 +479,10 @@ for (i in 1:n_lambda) {
 par(mfrow=c(1, 1))
 ```
 
+Les distributions postérieures des paramètres $\lambda_1$ à $\lambda_{12}$ montrent une augmentation progressive de l’intensité de présence du moustique tigre au cours du temps. Les estimations passent d’une faible valeur initiale ($\lambda_1 \approx 2,5$) à un niveau beaucoup plus élevé vers l’année 10 ($\lambda_{10} \approx 26,5$), mettant en évidence une forte variabilité inter-annuelle.
+
+Par ailleurs, les distributions deviennent plus concentrées au fil des années, ce qui traduit une diminution de l’incertitude et une amélioration de la précision des estimations grâce à des données plus abondantes.
+
 # Estimateurs ponctuels et des intervalles de confiances pour chaque parametre
 
 ```{r}
@@ -553,6 +552,12 @@ ggplot(results, aes(x = Parameter, y = Estimate)) +
     axis.title = element_text(size = 12)
   )
 ```
+
+Les estimations a posteriori des paramètres $\lambda_i$ montrent une augmentation marquée de l’intensité de présence du moustique tigre au cours du temps. Une transition nette apparaît entre les premières années ($\lambda < 5$) et les années 7 à 10, caractérisées par une forte croissance de l’abondance.
+
+L’année 10 se distingue par une estimation particulièrement élevée ($\hat{\lambda}_{10} \approx 26,6$), influencée par l’observation d’un site ayant enregistré un nombre exceptionnel de moustiques. Malgré cette valeur extrême, le modèle hiérarchique fournit une estimation stable grâce au partage d’information entre les années.
+
+Les intervalles de crédibilité à 95 % permettent d’évaluer l’incertitude des estimations. Les premières années présentent des intervalles plus larges, tandis que les années récentes bénéficient d’estimations plus précises, reflétant la disponibilité de données plus abondantes et une meilleure confiance statistique.
 
 # Analyser la qualité prédictive du modèle.
 
@@ -659,3 +664,9 @@ ppc_plot <- ggplot(ppc_long, aes(x = Valeur)) +
 
 print(ppc_plot)
 ```
+
+Les résultats montrent que le modèle tend à légèrement surestimer le nombre de sites sans moustiques, ce qui suggère une surestimation modérée de la probabilité d’absence. Cette différence peut être liée aux limites de la loi de Poisson pour représenter des données très dispersées.
+
+Par ailleurs, le modèle sous-estime les événements extrêmes. La valeur maximale observée (252 moustiques) est largement supérieure aux valeurs simulées, indiquant qu’un épisode exceptionnel n’est pas entièrement capturé par le modèle.
+
+Malgré cette limite, le modèle reproduit correctement la tendance générale et la variabilité inter-annuelle de l’invasion du moustique tigre.
