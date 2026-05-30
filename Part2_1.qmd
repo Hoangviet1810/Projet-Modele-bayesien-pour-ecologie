@@ -359,6 +359,10 @@ ggplot(lp_long, aes(x = Iteration, y = Log_Posterior, color = Chaine)) +
   )
 ```
 
+La figure montre une convergence rapide des cinq chaînes vers une même zone de forte densité. Leur superposition indique un excellent mélange et une exploration efficace de l’espace des paramètres.
+
+La stabilité des trajectoires confirme que la phase de chauffe (*burn-in*) est suffisante et que les estimations postérieures obtenues sont fiables.
+
 ```{r}
 # ---------------------------------------------------------
 #                   Main run 1 chain 
@@ -401,6 +405,10 @@ acf(chaine, main="Avant Burn-In (Chain 1)")
 # 4. Analyse de l'autocorrélation après Burn-in
 acf(chaine_after_burnin, main="Apres Burn-In (Chain 1)")
 ```
+
+L’analyse de la fonction d’autocorrélation (ACF) montre une diminution rapide de la corrélation entre les itérations successives. Après quelques lags, l’autocorrélation devient négligeable, indiquant que les échantillons générés sont quasiment indépendants.
+
+Cette propriété témoigne de l’efficacité de l’algorithme HMC, qui permet une exploration plus rapide de l’espace des paramètres que les méthodes MCMC classiques. De plus, la stabilité observée après la phase de *burn-in* confirme que les échantillons utilisés pour l’inférence proviennent bien d’une distribution stationnaire.
 
 ```{r}
 # Plots

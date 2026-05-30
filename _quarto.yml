@@ -17,6 +17,8 @@ website:
         text: "Modèle version 2"
       - href: Part3.qmd
         text: "Modèle Extension "
+      - href: Part4.qmd
+        text: "Conclusion "
         
     right:
       - icon: github

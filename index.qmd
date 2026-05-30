@@ -33,6 +33,7 @@ Le projet est divisé en plusieurs parties :
 
     Dans cette partie, nous avons adopté la même méthode que celle utilisée dans la version 1, puisqu’elle nécessite de modifier les paramètres de la première partie. La première approche, plus modulaire, est donc la plus adaptée.
 
+
 ::: callout-note
 ## Consulter le rapport complet
 

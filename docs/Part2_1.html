@@ -174,6 +174,10 @@ window.Quarto = {
     <a class="nav-link" href="./Part3.html"> 
 <span class="menu-text">Modèle Extension</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Part4.qmd"> 
+<span class="menu-text">Conclusion</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -555,21 +559,21 @@ Y_{i,j} \mid \lambda_i \sim \text{Poisson}(\lambda_i),
   Chaîne 1 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.6%
   Chaîne 1 | Progression : 100000 / 100000 (100%) | Taux d'acc. : 98.6%
 =&gt; Chaîne 1 terminée avec succès. Taux d'acceptation final : 98.60%
-Chaîne 1 terminée en 1.03 minutes.
+Chaîne 1 terminée en 1.04 minutes.
 Exécution de la Chaîne 2...
   Chaîne 2 | Progression : 25000 / 100000 (25%) | Taux d'acc. : 98.5%
   Chaîne 2 | Progression : 50000 / 100000 (50%) | Taux d'acc. : 98.6%
   Chaîne 2 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.7%
   Chaîne 2 | Progression : 100000 / 100000 (100%) | Taux d'acc. : 98.6%
 =&gt; Chaîne 2 terminée avec succès. Taux d'acceptation final : 98.64%
-Chaîne 2 terminée en 1.00 minutes.
+Chaîne 2 terminée en 1.08 minutes.
 Exécution de la Chaîne 3...
   Chaîne 3 | Progression : 25000 / 100000 (25%) | Taux d'acc. : 98.6%
   Chaîne 3 | Progression : 50000 / 100000 (50%) | Taux d'acc. : 98.6%
   Chaîne 3 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.6%
   Chaîne 3 | Progression : 100000 / 100000 (100%) | Taux d'acc. : 98.6%
 =&gt; Chaîne 3 terminée avec succès. Taux d'acceptation final : 98.61%
-Chaîne 3 terminée en 1.03 minutes.
+Chaîne 3 terminée en 1.12 minutes.
 Exécution de la Chaîne 4...
   Chaîne 4 | Progression : 25000 / 100000 (25%) | Taux d'acc. : 98.6%
   Chaîne 4 | Progression : 50000 / 100000 (50%) | Taux d'acc. : 98.6%
@@ -583,7 +587,7 @@ Exécution de la Chaîne 5...
   Chaîne 5 | Progression : 75000 / 100000 (75%) | Taux d'acc. : 98.6%
   Chaîne 5 | Progression : 100000 / 100000 (100%) | Taux d'acc. : 98.6%
 =&gt; Chaîne 5 terminée avec succès. Taux d'acceptation final : 98.59%
-Chaîne 5 terminée en 1.01 minutes.</code></pre>
+Chaîne 5 terminée en 0.98 minutes.</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -643,6 +647,8 @@ Chaîne 5 terminée en 1.01 minutes.</code></pre>
 </div>
 </div>
 </div>
+<p>La figure montre une convergence rapide des cinq chaînes vers une même zone de forte densité. Leur superposition indique un excellent mélange et une exploration efficace de l’espace des paramètres.</p>
+<p>La stabilité des trajectoires confirme que la phase de chauffe (<em>burn-in</em>) est suffisante et que les estimations postérieures obtenues sont fiables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---------------------------------------------------------</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#                   Main run 1 chain </span></span>
@@ -667,7 +673,7 @@ Chaîne 5 terminée en 1.01 minutes.</code></pre>
   Chaîne 1 | Progression : 3750 / 5000 (75%) | Taux d'acc. : 98.7%
   Chaîne 1 | Progression : 5000 / 5000 (100%) | Taux d'acc. : 98.5%
 =&gt; Chaîne 1 terminée avec succès. Taux d'acceptation final : 98.48%
-Chaîne 1 terminée en 0.06 minutes.</code></pre>
+Chaîne 1 terminée en 0.07 minutes.</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -700,6 +706,8 @@ Chaîne 1 terminée en 0.06 minutes.</code></pre>
 </div>
 </div>
 </div>
+<p>L’analyse de la fonction d’autocorrélation (ACF) montre une diminution rapide de la corrélation entre les itérations successives. Après quelques lags, l’autocorrélation devient négligeable, indiquant que les échantillons générés sont quasiment indépendants.</p>
+<p>Cette propriété témoigne de l’efficacité de l’algorithme HMC, qui permet une exploration plus rapide de l’espace des paramètres que les méthodes MCMC classiques. De plus, la stabilité observée après la phase de <em>burn-in</em> confirme que les échantillons utilisés pour l’inférence proviennent bien d’une distribution stationnaire.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plots</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
