@@ -57,4 +57,8 @@ Vous pouvez consulter le rapport détaillé du projet (format PDF) en cliquant s
 
 <a href="Rapport.pdf" target="_blank" style="font-weight: bold; text-decoration: underline;">  Ouvrir le rapport PDF  </a>
 
-![Dashboard](images/dashboard_bayes.png)
+### Dashboard interactif
+
+[![Dashboard](images/dashboard_bayes.png)](https://hoangviet1810.github.io/Projet-Modele-bayesien-pour-ecologie/images/dashboard_moustique.html)
+
+➡️ Cliquez sur l'image pour ouvrir le dashboard interactif.
