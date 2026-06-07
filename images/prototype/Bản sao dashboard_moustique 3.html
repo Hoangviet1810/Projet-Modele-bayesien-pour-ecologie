@@ -102,7 +102,7 @@
 
   .card-label {
     font-size: .58rem; letter-spacing: .12em; text-transform: uppercase;
-    color: #7a95b0; margin-bottom: 5px;  /* sáng hơn --muted */
+    color: var(--muted); margin-bottom: 5px;
   }
   .card-title {
     font-family: 'Syne', sans-serif; font-size: .88rem; font-weight: 600;
@@ -115,7 +115,7 @@
   .kpi-val.red   { color: var(--accent2); }
   .kpi-val.green { color: var(--accent3); }
   .kpi-val.amber { color: var(--accent4); }
-  .kpi-sub { font-size:.65rem; color:#8aaec8; margin-top:5px; }
+  .kpi-sub { font-size:.65rem; color:var(--muted); margin-top:5px; }
   .kpi-delta {
     display:inline-block; font-size:.65rem; margin-top:7px; padding:2px 7px; border-radius:20px;
   }
@@ -145,13 +145,13 @@
     width:7px; height:7px; border-radius:50%;
     background:var(--accent1); box-shadow:0 0 5px var(--accent1); z-index:2;
   }
-  .fp-val { color:var(--accent1); text-align:right; font-weight:600; }
+  .fp-val { color:var(--accent1); text-align:right; }
 
   /* Table */
   table { width:100%; border-collapse:collapse; font-size:.64rem; }
   thead tr { border-bottom:1px solid var(--border); }
-  th { color:#8aaec8; text-align:left; padding:3px 5px; font-weight:600; letter-spacing:.06em; font-size:.57rem; text-transform:uppercase; }
-  td { padding:4px 5px; color:#ccdae8; }
+  th { color:var(--muted); text-align:left; padding:3px 5px; font-weight:400; letter-spacing:.06em; font-size:.57rem; text-transform:uppercase; }
+  td { padding:4px 5px; color:var(--text); }
   tr:nth-child(even) td { background:rgba(255,255,255,.02); }
   .tag { display:inline-block; padding:1px 5px; border-radius:3px; font-size:.57rem; }
   .tag.base { background:rgba(0,229,255,.12);   color:var(--accent1); }
@@ -162,7 +162,7 @@
   .acf-bar  { flex:1; border-radius:2px 2px 0 0; }
   .acf-axis {
     border-top:1px dashed var(--border); margin-top:3px; padding-top:3px;
-    display:flex; justify-content:space-between; font-size:.6rem; color:#8aaec8;
+    display:flex; justify-content:space-between; font-size:.55rem; color:var(--muted);
   }
 
   /* Model boxes */
@@ -472,14 +472,10 @@
 const C1='#00e5ff', C2='#ff5370', C3='#c3e88d', C4='#ffcb6b';
 const SURFACE='#111520', BORDER='#1e2535', MUTED='#5a6580';
 
-/* ── Màu tick rõ hơn MUTED ── */
-const TICK  = '#9ab4cc';   /* ticks trục — sáng, đủ tương phản */
-const TITLE = '#b8ccde';   /* title trục — hơi sáng hơn tick */
-
-Chart.defaults.color      = TICK;          /* tất cả label mặc định */
+Chart.defaults.color = MUTED;
 Chart.defaults.borderColor = BORDER;
 Chart.defaults.font.family = "'JetBrains Mono', monospace";
-Chart.defaults.font.size   = 10;           /* 9 → 10 */
+Chart.defaults.font.size = 9;
 
 /* ── C5 : Lambda line ── */
 const lambdaData  = [2.5,3.1,2.8,3.4,3.9,4.8,7.2,6.5,9.1,26.6,8.3,7.9];
@@ -500,8 +496,8 @@ new Chart(document.getElementById('chartLambda'),{
     responsive:true,
     plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:(c)=> c.dataset.label==='λ̂ᵢ'?`λ̂=${c.parsed.y}`:'' }}},
     scales:{
-      x:{ grid:{color:BORDER}, ticks:{color:TICK, font:{size:10}, maxRotation:0} },
-      y:{ grid:{color:BORDER}, ticks:{color:TICK, font:{size:10}}, title:{display:true,text:'λ',color:TITLE,font:{size:10}} }
+      x:{ grid:{color:BORDER}, ticks:{color:MUTED,font:{size:8}} },
+      y:{ grid:{color:BORDER}, ticks:{color:MUTED,font:{size:8}}, title:{display:true,text:'λ',color:MUTED} }
     }
   }
 });
@@ -518,10 +514,10 @@ new Chart(document.getElementById('chartParams'),{
   },
   options:{
     responsive:true,
-    plugins:{ legend:{ labels:{ color:TICK, font:{size:9}, boxWidth:9 }}},
+    plugins:{ legend:{ labels:{ color:MUTED, font:{size:8}, boxWidth:9 }}},
     scales:{
-      x:{ grid:{display:false}, ticks:{color:TICK, font:{size:10}} },
-      y:{ grid:{color:BORDER},  ticks:{color:TICK, font:{size:10}}, suggestedMax:1.8 }
+      x:{ grid:{display:false}, ticks:{color:MUTED,font:{size:8}} },
+      y:{ grid:{color:BORDER},  ticks:{color:MUTED,font:{size:8}}, suggestedMax:1.8 }
     }
   }
 });
@@ -668,9 +664,9 @@ new Chart(document.getElementById('tracePlotCanvas'),{
     responsive:true, animation:{duration:1200},
     plugins:{ legend:{display:false} },
     scales:{
-      x:{ grid:{color:BORDER}, ticks:{color:TICK, font:{size:9}, callback:(v,i)=>tLabels[i]||null, maxTicksLimit:6} },
-      y:{ grid:{color:BORDER}, ticks:{color:TICK, font:{size:9}}, min:1248, max:1276,
-          title:{display:true,text:'Log-Post.',color:TITLE,font:{size:9}} }
+      x:{ grid:{color:BORDER}, ticks:{color:MUTED,font:{size:7}, callback:(v,i)=>tLabels[i]||null, maxTicksLimit:6} },
+      y:{ grid:{color:BORDER}, ticks:{color:MUTED,font:{size:7}}, min:1248, max:1276,
+          title:{display:true,text:'Log-Post.',color:MUTED,font:{size:7}} }
     }
   }
 });
