@@ -355,17 +355,17 @@
   <div class="card">
     <div class="card-label">Inférence a posteriori</div>
     <div class="card-title">Évolution λ̂ᵢ (années 1–12)</div>
-    <canvas id="chartLambda" height="155"></canvas>
+    <canvas id="chartLambda" height="185"></canvas>
   </div>
 
   <!-- C6 — μ & σ² grouped bar -->
   <div class="card">
     <div class="card-label">Hyperparamètres</div>
     <div class="card-title">μ & σ² : base vs extension</div>
-    <canvas id="chartParams" height="155"></canvas>
+    <canvas id="chartParams" height="185"></canvas>
   </div>
 
-  <!-- C7 — Carte France -->
+  <!-- C7 — Carte France (1 colonne normale) -->
   <div class="card">
     <div class="card-label">Répartition géographique</div>
     <div class="card-title">Occurrences par Province · France</div>
@@ -388,11 +388,20 @@
   <div class="card">
     <div class="card-label">Diagnostic MCMC</div>
     <div class="card-title">ACF Log-Postérieure (chaîne 1)</div>
-    <div class="acf-bars" id="acfBars"></div>
+    <div class="acf-bars" id="acfBars" style="height:100px;"></div>
     <div class="acf-axis">
       <span>0</span><span>5</span><span>10</span><span>15</span><span>35</span>
     </div>
-    <div style="font-size:.58rem;color:#9aaabf;margin-top:7px;">Décroissance rapide → quasi-indépendants après lag ≈ 15</div>
+    <div style="font-size:.56rem;color:#9aaabf;margin-top:8px;line-height:1.55;">Décroissance rapide → quasi-indépendants après lag ≈ 15</div>
+    <div style="margin-top:10px;padding:9px;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.12);border-radius:5px;">
+      <div style="font-size:.57rem;color:#8aaec8;margin-bottom:6px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;">Performances HMC</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:.6rem;">
+        <div><span style="color:var(--muted);">Chaînes</span><br><span style="color:var(--accent1);font-weight:700;">5</span></div>
+        <div><span style="color:var(--muted);">Itérations</span><br><span style="color:var(--accent1);font-weight:700;">100k</span></div>
+        <div><span style="color:var(--muted);">Burn-in</span><br><span style="color:var(--accent3);font-weight:700;">1 000</span></div>
+        <div><span style="color:var(--muted);">Taux acc.</span><br><span style="color:var(--accent3);font-weight:700;">~90%</span></div>
+      </div>
+    </div>
   </div>
 
   <!-- ══ HÀNG 3 ══ -->
