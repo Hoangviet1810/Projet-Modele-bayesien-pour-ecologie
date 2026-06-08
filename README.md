@@ -1,16 +1,16 @@
 <div align="center">
-  
- <h1>Moustique Tigre</h1>
-  <p><em>Modèle Bayésien Hiérarchique pour la prédiction spatio-temporelle</em></p>
 
-  <!-- Badges -->
- <a href="#"><img src="https://img.shields.io/badge/R-4.5-blue?style=flat-square" alt="R"></a>
- <a href="#"><img src="https://img.shields.io/badge/Bayesian-Hierarchical_Model-orange?style=flat-square" alt="Bayesian"></a>
- <a href="#"><img src="https://img.shields.io/badge/Spatio--Temporal-Prediction-green?style=flat-square" alt="Spatio-temporal"></a>
- <a href="#"><img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square" alt="Status"></a>
- <a href="#"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License"></a>
+<h1>Moustique Tigre</h1>
+
+<p><em>Modèle Bayésien Hiérarchique pour la prédiction spatio-temporelle</em></p>
+
+<a href="#"><img src="https://img.shields.io/badge/R-4.5-276DC3?logo=r&logoColor=white&style=flat-square"></a>
+<a href="#"><img src="https://img.shields.io/badge/Bayesian-Hierarchical%20Model-orange?style=flat-square"></a>
+<a href="#"><img src="https://img.shields.io/badge/Spatio--Temporal-Forecasting-success?style=flat-square"></a>
+<a href="#"><img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square"></a>
+<a href="#"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square"></a>
+
 </div>
-
 <br>
 
 # 
