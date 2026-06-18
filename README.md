@@ -8,12 +8,12 @@
 <a href="#"><img src="https://img.shields.io/badge/Bayesian-Hierarchical%20Model-orange?style=flat-square"></a>
 <a href="#"><img src="https://img.shields.io/badge/Spatio--Temporal-Forecasting-success?style=flat-square"></a>
 <a href="#"><img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square"></a>
+<a href="#"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square"></a>
 
 <a href="https://hoangviet1810.github.io/Projet_Modele_hierarchique_bayesien_pour_ecologie/">
-  <img src="https://img.shields.io/badge/Demo-Live_Website-red?style=flat-square">
+  <img src="https://img.shields.io/badge/Demo-Live%20Website-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white">
 </a>
 
-<a href="#"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square"></a>
 
 </div>
 <br>
